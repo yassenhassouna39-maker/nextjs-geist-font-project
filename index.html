@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flashr Cards‑YNA</title>
+  <meta name="description" content="تعلّم البرمجة ببطاقات سريعة — Flashr Cards-YNA" />
+  <link href="style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- ====== Header ====== -->
+  <header class="header">
+    <div class="container row">
+      <div class="brand">
+        <div class="logo">Y</div>
+        <div class="title">Flashr Cards‑YNA</div>
+        <div class="badge">تعليم البرمجة ببطاقات سريعة</div>
+      </div>
+      <div class="spacer"></div>
+      <div class="seg" id="roleSeg">
+        <button class="active" data-role="learner">المتعلّم</button>
+        <button data-role="dev">المطوّر</button>
+      </div>
+      <button class="btn" id="exportBtn" title="تصدير قاعدة البيانات">تصدير</button>
+      <label class="btn filebtn" title="استيراد قاعدة البيانات">
+        استيراد<input id="importFile" type="file" accept="application/json" hidden>
+      </label>
+      <div class="userbox">
+        <span id="currentUserLabel" class="muted"></span>
+        <button class="btn" id="logoutBtn" style="display:none">خروج</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== Login & Signup ====== -->
+  <section id="authScreen" class="fullcenter">
+    <div class="auth-card panel pad">
+      <div class="tabs">
+        <button class="tab active" data-auth="login">تسجيل الدخول</button>
+        <button class="tab" data-auth="signup">حساب جديد</button>
+      </div>
+      <div id="loginForm" class="auth-form">
+        <label>البريد الإلكتروني</label>
+        <input type="email" id="loginEmail" placeholder="example@email.com">
+        <label>كلمة المرور <span class="muted">(اختياري الآن)</span></label>
+        <input type="password" id="loginPassword" placeholder="••••••••">
+        <button class="btn primary full" id="loginBtn">دخول</button>
+      </div>
+      <div id="signupForm" class="auth-form" style="display:none">
+        <label>الاسم</label>
+        <input type="text" id="signupName" placeholder="اسمك">
+        <label>البريد الإلكتروني</label>
+        <input type="email" id="signupEmail" placeholder="example@email.com">
+        <label>كلمة المرور <span class="muted">(اختياري الآن)</span></label>
+        <input type="password" id="signupPassword" placeholder="••••••••">
+        <button class="btn primary full" id="signupBtn">إنشاء حساب</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== App ====== -->
+  <main class="container grid layout" id="app" style="display:none">
+    <!-- Sidebar -->
+    <aside class="panel pad">
+      <div class="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="muted"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input id="search" placeholder="ابحث عن كورس أو موضوع…"/>
+      </div>
+      <div class="toolbar" style="margin-top:10px">
+        <span class="muted" id="courseCount">—</span>
+        <span class="spacer"></span>
+        <button class="btn primary" id="addCourseBtn" style="display:none">كورس جديد</button>
+      </div>
+      <div id="courses" class="grid" style="margin-top:12px"></div>
+
+      <div id="adminPanel" class="panel pad adminonly" style="margin-top:16px; display:none">
+        <div class="row" style="justify-content:space-between; align-items:center">
+          <h4 style="margin:0">لوحة تحكم الأدمن</h4>
+          <span class="pill">مستخدمين جدد</span>
+        </div>
+        <div class="list" id="usersList" style="max-height:220px; overflow:auto"></div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <section class="panel pad" id="mainPanel">
+      <div id="courseHeader"></div>
+      <div id="lessonTabs" class="tabs" style="margin:12px 0"></div>
+      <div id="view"></div>
+    </section>
+  </main>
+
+  <footer class="container center muted" style="padding:30px 0">صنع بحب — نسخة محسّنة قابلة للنشر</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
